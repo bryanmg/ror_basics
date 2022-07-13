@@ -1,0 +1,17 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>User Posts</h1>
+
+<div id="posts">
+  <% @posts.each do |post| %>
+    <%= render post %>
+    <p>
+      <%= link_to "Show this post", user_post_path(current_user, post), class: 'show-link' %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New post", new_user_post_path(current_user) %>
+<br/>
+<br/>
+<%= button_to "Logout", destroy_user_session_path, :method => :delete, :class => 'button is-success is-inverted' %>

@@ -64,6 +64,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_12_170624) do
     t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -82,4 +84,5 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_12_170624) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "comments", "posts"
+  add_foreign_key "posts", "users"
 end

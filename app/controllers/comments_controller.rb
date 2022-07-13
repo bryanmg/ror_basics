@@ -1,8 +1,11 @@
+# frozen_string_literal: true
+
 class CommentsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_post
 
   def create
-    return redirect_to posts_path, notice: 'Sorry, this is just a demo app! 👀'
+    return redirect_to user_posts_path(current_user), notice: 'Sorry, this is just a demo app! 👀'
 
     comment = @post.comments.new(comment_params)
     if comment.save

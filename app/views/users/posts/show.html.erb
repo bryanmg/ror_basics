@@ -1,0 +1,9 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @post, include_form: true, url: user_post_comments_path(current_user, @post), method: :put %>
+
+<div>
+  <%= link_to "Edit this post", edit_user_post_path(current_user, @post), class: 'edit-link' %> |
+  <%= link_to "Back to posts", user_posts_path(current_user), class: 'back-link' %>
+  <%= button_to "Destroy this post", user_post_path(current_user, @post), method: :delete %>
+</div>
